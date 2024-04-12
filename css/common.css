@@ -230,33 +230,32 @@ div.widget button {
 }
 
 /* Style task 6 */
-
-#controls {
+div#controls {
   margin: 24px 24px 0 24px;
   padding: 24px 24px 24px 24px;
   gap: 16px;
   border-radius: 8px;
   opacity: 0px;
   background-color: #f6f6fe;
-  width: 486px;
-  height: 104px;
   padding: 32px 32px 32px 32px;
   border-radius: 8px;
   opacity: 0px;
   display: flex;
+  width: 486px;
+  height: 104px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 16px;
 }
-ul#controls input {
-  width: 150px;
+#controls input {
+  min-width: 150px;
   height: 40px;
-  padding: 8px 72px 8px 72px;
+  padding: 8px 72px;
   border-radius: 8px;
-  border: 1px;
+  border: 1px solid #808080;
   opacity: 0px;
-  border-color: #808080;
+  /* border-color: #808080; */
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -269,6 +268,7 @@ ul#controls input:hover {
   border-color: #000000;
 }
 button[data-create] {
+  min-width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,6 +291,7 @@ button[data-create]:hover {
 }
 
 button[data-destroy] {
+  min-width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
