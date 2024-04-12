@@ -248,20 +248,20 @@ div#controls {
   justify-content: center;
   gap: 16px;
 }
-#controls input {
+div#controls input {
   min-width: 150px;
   height: 40px;
-  padding: 8px 72px;
+  padding: 8px 16px;
   border-radius: 8px;
-  border: 1px solid #808080;
+  border: 1px solid;
   opacity: 0px;
-  /* border-color: #808080; */
+  border-color: #808080;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  text-align: left;
+  text-align: right;
   color: #2e2f42;
 }
 ul#controls input:hover {
