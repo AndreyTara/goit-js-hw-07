@@ -136,6 +136,7 @@ form.login-form {
   flex-direction: column;
   justify-content: flex-start;
   gap: 8px;
+  margin: 24px;
 }
 form.login-form input {
   margin-top: 8px;
