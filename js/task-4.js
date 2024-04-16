@@ -1,8 +1,9 @@
 // Отримуємо посилання на елементи DOM
-const formDom = document.querySelector("form.login-form");
-const formInputs = formDom.querySelectorAll("input");
-const inputEmail = document.querySelector("input[name='email']");
-
+const form = document.querySelector("form.login-form");
+const formInputs = document.querySelectorAll("input");
+const formEmail = document.querySelector("input[name='email']");
+const formPassword = document.querySelector("input[name='password']");
+const formButtom = document.querySelector("form.login-form button[submit]");
 /**
  * validateEmail(email) Функція для перевірки правильності формату email
  * @param {String} email
@@ -16,36 +17,58 @@ function validateEmail(email) {
 }
 
 // Додаємо обробник події для "form"
-formDom.addEventListener("submit", () => {
-  // event.preventDefault();
-  // додавання змінної для зберігання занчення пошти
-  let emailVal = inputEmail.value;
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  // додавання змінної для зберігання значення form
+  const form = event.target;
 
+  // додавання змінної для зберігання значення email
+  let emailVal = form.elements.email.value;
+
+  // додавання змінної для зберігання значення password
+  const passwordVal = form.elements.password.value;
+  const emptyInputsType = [];
   // перевірка на пусоту знаначення введеного у inputs
-  let emptyInputs = Array.from(formInputs).filter(
-    (input) => input.value === ""
-  );
+  let emptyInputs = Array.from(formInputs).filter((input) => {
+    if (input.value.trim() === "") {
+      emptyInputsType.push(input.name);
+      return input;
+    }
+  });
 
   // додавання класу ".error" або зняття класу ".error"
   formInputs.forEach((input) => {
-    if (input.value === "") {
+    if (input.value.trim() === "") {
       input.classList.add("error");
     } else {
       input.classList.remove("error");
     }
   });
+
   // перевірка чи заповнені всі inputs
+  if (emailVal === "" || passwordVal === "") {
+    return console.log(
+      `All form fields must be filled in ${`${emptyInputsType.join(",")}`}`
+    );
+  }
+
   if (emptyInputs.length !== 0) {
-    console.log("Inputs not filled");
-    return false;
+    console.log("Input(s) not filled");
+    // event.preventDefault();
+    return;
   }
 
   // перевірка чи inputEmail відповідаэ формату пошти
   if (!validateEmail(emailVal)) {
-    inputEmail.classList.add("error");
+    formEmail.classList.add("error");
     console.log("Input email invalid");
-    return false;
+    // event.preventDefault();
+    return;
   } else {
-    inputEmail.classList.remove("error");
+    formEmail.classList.remove("error");
+  }
+
+  if (event.target) {
+    console.log(`Login: ${emailVal}, Password: ${passwordVal}`);
   }
 });

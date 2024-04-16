@@ -27,12 +27,17 @@ const images = [
 ];
 
 // Отримуємо посилання на елементи DOM
-const domUl = document.querySelector("ul.gallery");
+const domUlGallery = document.querySelector("ul.gallery");
 
-// додаємо елементи до  "ul.gallery"
-images.reduce((acc, item) => {
-  const liDom = document.createElement("li");
-  liDom.innerHTML = `<img src="${item.url}" alt="${item.alt}" width ="360" height="300">`;
-  acc.appendChild(liDom);
-  return acc;
-}, domUl);
+function addElementsSimple() {
+  // генеруємо шаблонні строки до кожного item of images
+  const getStrItems = images.reduce((acc, item) => {
+    acc += `<img src="${item.url}" alt="${item.alt}" width ="360" height="300">`;
+    return acc;
+  }, "");
+
+  // додаємо  шаблонну строку getStrItems до  "ul.gallery"
+  domUlGallery.innerHTML = getStrItems;
+} // час виконнаня аункції 1.09мс
+
+addElementsSimple();
