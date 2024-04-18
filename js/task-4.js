@@ -67,7 +67,5 @@ form.addEventListener("submit", (event) => {
     formEmail.classList.remove("error");
   }
 
-  if (event.target) {
-    form.submit();
-  }
+  form.submit();
 });
