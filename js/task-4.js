@@ -62,13 +62,12 @@ form.addEventListener("submit", (event) => {
   if (!validateEmail(emailVal)) {
     formEmail.classList.add("error");
     console.log("Input email invalid");
-    // event.preventDefault();
     return;
   } else {
     formEmail.classList.remove("error");
   }
 
   if (event.target) {
-    console.log(`Login: ${emailVal}, Password: ${passwordVal}`);
+    form.submit();
   }
 });
